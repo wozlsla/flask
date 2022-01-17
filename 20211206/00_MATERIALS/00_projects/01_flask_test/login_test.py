@@ -7,8 +7,9 @@ def login():
     username = request.args.get('user_name')
     passwd = request.args.get('pw')
     email = request.args.get('email_address')
-    print (username, passwd, email)
-    
+    print(username, passwd, email)
+    # http GET http://localhost:8080/login?username=dave"&"pw=111"&"email_address=aa@email.com (cmd)
+
     if username == 'dave':
         return_data = {'auth': 'success'}
     else:
@@ -23,4 +24,5 @@ def hello_html():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port="8080")
+    # app.run(host="0.0.0.0", port="8080")
+    app.run(host="192.168.0.72", port="8080")
