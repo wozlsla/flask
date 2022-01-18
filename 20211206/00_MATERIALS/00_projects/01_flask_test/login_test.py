@@ -20,7 +20,7 @@ def login():
 @app.route('/html_test')
 def hello_html():
     # html file은 templates 폴더에 위치해야 함
-    return render_template('login.html')
+    return render_template('login_rawtest.html')
 
 
 if __name__ == '__main__':

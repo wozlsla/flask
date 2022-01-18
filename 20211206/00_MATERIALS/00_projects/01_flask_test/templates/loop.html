@@ -7,8 +7,11 @@
   </head>
   <body>
     <ul>
-      {% for value in values %}
+      <!-- {% for value in values %}
       <li>{{ value }}</li>
+      {% endfor %} -->
+      {% for index in range(values | length) %}
+      <li>{{ values[index] }} {{ loop.index }}</li>
       {% endfor %}
     </ul>
   </body>
