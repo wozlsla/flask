@@ -13,7 +13,7 @@ import datetime
 app = Flask(__name__, static_url_path='/static')
 # app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 CORS(app)
-app.secret_key = 'dave_server1'
+app.secret_key = 'dave_server1' # fix / os.urandom(24)
 
 app.register_blueprint(blog.blog_abtest, url_prefix='/blog')
 

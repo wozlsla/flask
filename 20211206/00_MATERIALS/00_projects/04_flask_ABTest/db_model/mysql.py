@@ -11,6 +11,6 @@ MYSQL_CONN = pymysql.connect(
 
 
 def conn_mysqldb():
-    if not MYSQL_CONN.open:
+    if not MYSQL_CONN.open:             # case : connection (X)
         MYSQL_CONN.ping(reconnect=True)
     return MYSQL_CONN

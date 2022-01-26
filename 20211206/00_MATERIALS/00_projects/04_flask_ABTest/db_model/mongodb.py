@@ -5,10 +5,10 @@ MONGO_CONN = pymongo.MongoClient('mongodb://%s' % (MONGO_HOST))
 
 
 def conn_mongodb():
-    try:
+    try:             # case : connection (O)
         MONGO_CONN.admin.command('ismaster')
         blog_ab = MONGO_CONN.blog_session_db.blog_ab
-    except:
+    except:         # case : connection (X)
         MONGO_CONN = pymongo.MongoClient('mongodb://%s' % (MONGO_HOST))
         blog_ab = MONGO_CONN.blog_session_db.blog_ab
 
