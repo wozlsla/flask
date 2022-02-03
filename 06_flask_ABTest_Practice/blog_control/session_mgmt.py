@@ -25,9 +25,9 @@ class BlogSession():
         if blog_id == None:
             if BlogSession.session_count == 0:
                 BlogSession.session_count = 1
-                return 'index.html'
+                return 'blog_A.html'
             else:
                 BlogSession.session_count = 0
-                return 'index_2.html'
+                return 'blog_B.html'
         else:
             return BlogSession.blog_page[blog_id]

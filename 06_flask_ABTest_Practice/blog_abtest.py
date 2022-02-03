@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, render_template, make_response
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 from flask_cors import CORS
 from blog_view import blog
+from blog_control.user_mgmt import User
 import os
 
 # 환경설정
@@ -10,13 +11,14 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 app = Flask(__name__, static_url_path='/static')
 CORS(app)
-app.secure_key = 'jm_server'
+# app.secure_key = 'jm_server'
+app.secret_key = 'jm_server'
 
 
 app.register_blueprint(blog.blog_abtest, url_prefix='/blog')
 login_manager = LoginManager()
-login_manager.init_app(app)  # app 등록
-login_manager.session_protection = 'strong'  # session management
+login_manager.init_app(app)
+login_manager.session_protection = 'strong'
 
 
 @login_manager.user_loader
@@ -30,4 +32,4 @@ def unauthorized():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port='8080', debug=True)
