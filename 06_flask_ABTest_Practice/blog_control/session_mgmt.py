@@ -9,8 +9,7 @@ class BlogSession():
     @staticmethod
     def save_session_info(session_ip, user_email, webpage_name):  # 접속 할 때마다 접속 정보 저장
         now = datetime.now()
-        # time -> str,  https://strftime.org/
-        now_time = now.strftime("%d/%m/%Y %H:%M:%S")
+        now_time = now.strftime("%d/%m/%Y %H:%M:%S")  # https://strftime.org/
 
         mongo_db = conn_mongodb()
         mongo_db.insert_one({
@@ -21,13 +20,13 @@ class BlogSession():
         })
 
     @staticmethod
-    def get_blog_page(blog_id=None):  # args 없어도 O. 사용하려면 넣기
+    def get_blog_page(blog_id=None):
         if blog_id == None:
             if BlogSession.session_count == 0:
                 BlogSession.session_count = 1
-                return 'blog_A.html'
+                return BlogSession.blog_page['A']
             else:
                 BlogSession.session_count = 0
-                return 'blog_B.html'
+                return BlogSession.blog_page['B']
         else:
             return BlogSession.blog_page[blog_id]
