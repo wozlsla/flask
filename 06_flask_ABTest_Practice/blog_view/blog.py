@@ -1,5 +1,5 @@
 from flask import Flask, Blueprint, request, render_template, make_response, jsonify, redirect, url_for
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user, logout_user
 from blog_control.user_mgmt import User
 import datetime
 
@@ -30,6 +30,13 @@ def set_email():
 # Method not allowed 401
 # <form action="/blog/set_email" method="get">
 # http://192.168.0.72:8080/blog/set_email?user_email=dave%40gmail.com&blog_id=A
+
+
+@blog_abtest.route('/logout')
+def logout():
+    User.delete(current_user.id)  # db
+    logout_user()  # flask
+    return redirect(url_for('blog.test_blog'))
 
 
 @blog_abtest.route('/test_blog')
